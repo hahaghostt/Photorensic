@@ -21,6 +21,9 @@ public class FPCharacterController : MonoBehaviour
     private float rotationX = 0;
     private CharacterController characterController;
 
+    public AudioSource walking;
+    public AudioClip walkingClip; 
+
     private bool canMove = true;
 
     void Start()
@@ -32,6 +35,14 @@ public class FPCharacterController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.S) || (Input.GetKey(KeyCode.D)))))
+        {
+            walking.enabled = true; 
+        }
+
+        else 
+        { walking.enabled = false; }
+
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
