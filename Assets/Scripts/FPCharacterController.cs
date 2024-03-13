@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -22,7 +23,9 @@ public class FPCharacterController : MonoBehaviour
     private CharacterController characterController;
 
     public AudioSource walking;
-    public AudioClip walkingClip; 
+    public AudioClip walkingClip;
+
+    public GameObject Polaroid; 
 
     private bool canMove = true;
 
@@ -31,17 +34,24 @@ public class FPCharacterController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+       // Polaroid = false; 
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.S) || (Input.GetKey(KeyCode.D)))))
         {
-            walking.enabled = true; 
+            walking.enabled = true;
         }
 
-        else 
+        else
         { walking.enabled = false; }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+          //  Polaroid = true; 
+        }
+
 
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
