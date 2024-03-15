@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class Photography : MonoBehaviour
@@ -16,7 +18,9 @@ public class Photography : MonoBehaviour
 
     [Header("Flash Effect")]
     [SerializeField] private GameObject cameraFlash;
+    [SerializeField] private GameObject FlashUI; 
     [SerializeField] private float flashTime;
+    [SerializeField] private Animator flashAnimator; 
 
     [Header("Photo Fader Effect")]
     [SerializeField] public Animator FadingAnimation;
@@ -29,7 +33,16 @@ public class Photography : MonoBehaviour
     [SerializeField] private AudioSource cameraAudio;
 
     [Header("UI")]
-    [SerializeField] public GameObject PhotoFrame2; 
+    [SerializeField] public GameObject PhotoFrame2;
+
+    [Header("Post-Processing Effect")]
+    [SerializeField] private VolumeProfile gameVolume;
+    private ColorAdjustments colorAdjustments;
+
+
+
+
+
 
 
 
@@ -46,10 +59,18 @@ public class Photography : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         if (Input.GetKey(KeyCode.E))
         {
             CameraUI.SetActive(true);
             eKeyPressed = true;
+            ColorAdjustments cA;
+            if (gameVolume.TryGet<ColorAdjustments>(out cA))
+            {
+                colorAdjustments = cA;
+                colorAdjustments.hueShift.overrideState = true;
+                colorAdjustments.hueShift.value = 20f;
+            }
         }
 
         if (Input.GetMouseButtonDown(1) && eKeyPressed)
@@ -85,9 +106,13 @@ public class Photography : MonoBehaviour
         photoDisplayArea.sprite = photoSprite;
         CameraUI.SetActive(false);
         PhotoFrame.SetActive(true);
+        FlashUI.SetActive(true); 
+
         StartCoroutine(CameraFlashEffect());
         FadingAnimation.Play("Flash");
 
+
+        flashAnimator.Play("FlashAnimator");
         StartCoroutine(HidePhotoFrameAfterDelay(5f));
 
         //Flash
@@ -101,15 +126,18 @@ public class Photography : MonoBehaviour
 
     IEnumerator CameraFlashEffect()
     {
+        flashAnimator.Play("FlashAnimator");
         CameraUI.SetActive(false);
         cameraFlash.SetActive(true);
+        FlashUI.SetActive(true);
         yield return new WaitForSeconds(flashTime);
-        cameraAudio.Play();
         cameraFlash.SetActive(false);
+        cameraAudio.Play();
     }
 
     public void RemovePhoto()
     {
+        
         PhotoFrame.SetActive(false); 
         viewingPhoto = false;
         PhotoFrame.SetActive(false);
