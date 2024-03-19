@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Shader
+  m_Name: toon check
   m_Shader: {fileID: -6465566751694194690, guid: b2fc71cade6c38549b869b3f31aa56b1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MainTex:
-        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: 632be367b1bc0104c8ee172a1e43d39e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Mask_R_Emission:
-        m_Texture: {fileID: 10906, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -89,10 +89,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Brightness_Rim: 1.86
-    - Rim_Power: 0.8
-    - Toon_Ramp_Offset: 0.36
-    - Toon_Ramp_Smoothness: 0.034
+    - Brightness_Rim: 5
+    - Rim_Power: 0
+    - Toon_Ramp_Offset: 0.49
+    - Toon_Ramp_Smoothness: 0.09
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -125,13 +125,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Toon_Ramp_Tint: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+    - Toon_Ramp_Tint: {r: 0, g: 0.17741942, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.36785296, g: 0.3679245, b: 0.33495015, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1531639589818209067
+--- !u!114 &5139589407443117844
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

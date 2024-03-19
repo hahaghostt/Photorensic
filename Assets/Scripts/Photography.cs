@@ -60,7 +60,7 @@ public class Photography : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.R))
         {
             CameraUI.SetActive(true);
             eKeyPressed = true;
