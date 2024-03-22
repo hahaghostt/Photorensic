@@ -48,9 +48,6 @@ namespace Photorensic
             People.SetActive(false);
             happySprite.SetActive(false);
             ExtraSprite.SetActive(false);
-            Options = false;
-            KillObject.SetActive(true);
-            Katherine1.SetActive(false);
             DestroyDoor.SetActive(true);
 
 
@@ -67,11 +64,11 @@ namespace Photorensic
                 string[] name = new string[Name.Length];
                 text3.text = Name[Name2];
 
-                pressE.SetActive(false);
                 d_template.SetActive(true);
                 defaultSprite.SetActive(true);
-                Katherine1.SetActive(false);
                 UpdateDialogue();
+                placement += 1;
+
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
