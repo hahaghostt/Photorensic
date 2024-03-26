@@ -20,7 +20,6 @@ namespace Photorensic
         public GameObject Katherine1;
         public GameObject objectToShow;
         public float delayInSeconds = 2f;
-        public GameObject KillObject;
 
         public string[] Dialogue;
         public int placement;
@@ -39,6 +38,8 @@ namespace Photorensic
         public GameObject OptionsDialogue;
 
         public GameObject DestroyDoor;
+
+        public string nextSceneName;
 
         bool player_detection = false;
 
@@ -88,13 +89,21 @@ namespace Photorensic
                     defaultSprite.SetActive(false);
                     ExtraSprite.SetActive(false);
                     happySprite.SetActive(true);
+                    ExtraSprite.SetActive(true);
                 }
 
                 else if (Dialogue[placement].Contains("there has been a murder"))
                 {
                     defaultSprite.SetActive(true);
                     ExtraSprite.SetActive(false);
-                    happySprite.SetActive(false); 
+                    happySprite.SetActive(false);
+                    {
+                        {
+                            delayInSeconds = 5;
+                            SceneManager.LoadScene(nextSceneName);
+                            Debug.Log("NextScene"); 
+                        }
+                    }
                 }
 
                 else if (Dialogue[placement].Contains("I want you to investigate and take photos of any possible evidence"))
@@ -102,6 +111,7 @@ namespace Photorensic
                     defaultSprite.SetActive(false);
                     ExtraSprite.SetActive(true);
                     happySprite.SetActive(false);
+
                 }
 
 
