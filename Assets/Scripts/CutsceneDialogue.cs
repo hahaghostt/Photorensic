@@ -73,7 +73,7 @@ namespace Photorensic
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
-                placement += 1;
+                placement += 2;
                 UpdateDialogue();
             }
         }
@@ -89,7 +89,7 @@ namespace Photorensic
                     defaultSprite.SetActive(false);
                     ExtraSprite.SetActive(false);
                     happySprite.SetActive(true);
-                    ExtraSprite.SetActive(true);
+                    ExtraSprite.SetActive(true); // yahya did this ome.
                 }
 
                 else if (Dialogue[placement].Contains("there has been a murder"))

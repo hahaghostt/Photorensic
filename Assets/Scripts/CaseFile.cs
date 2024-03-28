@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class CaseFile : MonoBehaviour
 {
+    [Header ("CaseFile")]
     public GameObject caseFile;
-    public TMPro.TextMeshPro Subtitles;
 
+    [Header ("Subtitles Interact")] 
+    public TMPro.TextMeshPro Subtitles;
     public string[] SubtitlesPlacement;
     public int placement;
 
