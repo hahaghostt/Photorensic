@@ -16,9 +16,20 @@ public class CaseFile : MonoBehaviour
 
     bool player_detection = false;
 
+    public GameObject caseUI; 
+    
+
     public void Start()
     {
-        caseFile.SetActive(false);
+        // caseFile.SetActive(false);
+        caseUI.SetActive(false);
+       caseFile = caseFile.GetComponent<GameObject>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Trigger Collision"); 
+        caseUI.SetActive(true); 
     }
 
     private void Update()
@@ -26,7 +37,7 @@ public class CaseFile : MonoBehaviour
         if (player_detection == true && Input.GetKeyDown(KeyCode.E))
         {
             placement = 1; 
-            caseFile.SetActive(true);
+           // caseFile.SetActive(true);
             Subtitles.text = SubtitlesPlacement[placement];
         }
     }
