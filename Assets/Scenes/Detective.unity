@@ -24856,6 +24856,7 @@ GameObject:
   - component: {fileID: 7196597112689168536}
   - component: {fileID: 7657645330232787118}
   - component: {fileID: 7657645330232787119}
+  - component: {fileID: 7657645330232787120}
   m_Layer: 0
   m_Name: CaseFiles
   m_TagString: Untagged
@@ -28362,6 +28363,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7657645330232787120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671167003888336565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0708021c41bb8a4449a365de22871c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractE: {fileID: 25300532}
 --- !u!4 &7686631205559506458
 Transform:
   m_ObjectHideFlags: 0
