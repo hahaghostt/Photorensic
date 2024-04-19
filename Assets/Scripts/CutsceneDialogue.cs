@@ -15,6 +15,7 @@ namespace Photorensic
         public GameObject happySprite;
         public GameObject ExtraSprite;
         public GameObject surpriseSprite;
+        public GameObject ExtraSpriteBlinking; 
 
         public float textSpeed = 0.05f; // Speed at which the text is displayed
 
@@ -24,14 +25,8 @@ namespace Photorensic
         public TextMeshProUGUI text2TMP; // TextMeshPro for dialogue
         public TextMeshProUGUI text3TMP; // TextMeshPro for character name
 
-        public GameObject pressE;
-        public GameObject TASK;
-        public GameObject TASK2;
-
         public string[] Name;
         public int Name2;
-
-        public GameObject DestroyDoor;
 
         public string nextSceneName;
 
@@ -48,8 +43,13 @@ namespace Photorensic
             neutralSprite.SetActive(false);
             happySprite.SetActive(false);
             ExtraSprite.SetActive(false);
+            ExtraSpriteBlinking.SetActive(false); 
             surpriseSprite.SetActive(false);
             optionsPanel.SetActive(false);
+
+            option1Button.onClick.AddListener(() => SelectOption(1));
+            option2Button.onClick.AddListener(() => SelectOption(2));
+            option3Button.onClick.AddListener(() => SelectOption(3));
         }
 
         void Update()
@@ -79,9 +79,26 @@ namespace Photorensic
                 yield return new WaitForSeconds(textSpeed);
             }
 
+            if (Dialogue[placement].Contains("So…"))
+            {
+                ExtraSprite.SetActive(true);
+                neutralSprite.SetActive(false);
+            }
+
+            if (Dialogue[placement].Contains("It’s a man in his late 60s. Sir Guy Thorpe."))
+            {
+                ExtraSpriteBlinking.SetActive(true);
+                neutralSprite.SetActive(false);
+                ExtraSprite.SetActive(false); 
+            }
+
             // Typing finished, check for options to be displayed
             if (Dialogue[placement].Contains("Excited for your first proper case?"))
             {
+                happySprite.SetActive(true);
+                ExtraSpriteBlinking.SetActive(false); 
+                neutralSprite.SetActive(false);
+                ExtraSprite.SetActive(false); 
                 optionsPanel.SetActive(true);
                 optionsDisplayed = true;
             }
@@ -97,7 +114,6 @@ namespace Photorensic
         {
             text3TMP.text = Name[Name2];
         }
-
         public void SelectOption(int option)
         {
             switch (option)
@@ -118,8 +134,11 @@ namespace Photorensic
                     break;
             }
 
-            optionsPanel.SetActive(false); // Hide options panel after selecting an option
-            optionsDisplayed = false; // Reset optionsDisplayed flag
+            // Hide options panel after selecting an option
+            optionsPanel.SetActive(false);
+            optionsDisplayed = false;
+
         }
+
     }
 }
